@@ -1,0 +1,53 @@
+.table-custom thead tr{
+  text-align: center;
+};
+
+.borderless td, borderless th {
+  border: none;
+}
+
+.table-custom tr td:first-of-type {
+  width: 10%;
+  border: 1px solid #bbbbbb;
+  background-color: #006991;
+  color: white;
+
+}
+
+.table-custom tr td:nth-of-type(2) {
+  max-width: 650px;
+}
+
+textarea {
+  resize: none;
+}
+
+#topic {
+  min-height: 80px;
+}
+
+#description {
+  min-height: 200px;
+}
+
+.contain {
+  padding: 10px;
+  background-color: #fafafa;
+
+  table {
+    margin-bottom: 0;
+  }
+
+  -webkit-box-shadow: 0 0 5px 2px #ddd;
+  -moz-box-shadow: 0 0 5px 2px #ddd;
+  box-shadow: 0 0 5px 2px #ddd;
+  position: relative;
+  left:0; right:0;
+  top:0; bottom:0;
+  margin: auto;
+
+  max-width:900px;
+  max-height:100%;
+  overflow:auto;
+
+}

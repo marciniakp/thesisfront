@@ -1,0 +1,45 @@
+<p class="alert alert-danger" *ngIf="!authService.isAuthenticated()">Musisz się zalogować</p>
+<div *ngIf="authService.isAuthenticated()">
+  <div style="margin: 10px 30px;">
+    <h2 class="container" style="text-align: center; padding: 40px; margin-bottom: 30px;">Lista tematów</h2>
+  </div>
+
+  <p class="alert alert-danger" *ngIf="!allThesis">Brak tematów</p>
+
+  <p class="alert alert-primary" *ngIf="feedback">{{feedback}}</p>
+
+  <div  *ngFor="let thesis of allThesis" style="margin: 10px 30px;">
+    <div class="container">
+      <table class="table borderless table-custom">
+        <tbody>
+        <tr>
+          <td>Temat</td>
+          <td><span>{{thesis.description}}</span></td>
+        </tr>
+        <tr>
+          <td>Opis</td>
+          <td>
+            <article>{{thesis.description}}</article>
+          </td>
+        </tr>
+        <tr>
+          <td>Dyplomant</td>
+          <td>{{thesis.owner}}</td>
+        </tr>
+        <tr>
+          <td>Promotor</td>
+          <td>{{thesis.mentor}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <br/>
+      <div class="btn-group buttons">
+        <div style="text-align: center">
+          <button *ngIf="!authService.isStudent()" class="btn btn-danger" (click)="remove(thesis)">Usuń</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

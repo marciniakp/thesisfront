@@ -1,0 +1,25 @@
+<div class="login-page">
+  <div class="form">
+    <h2 class="align-content-center"> Zaloguj się</h2>
+    <br/>
+    <form class="login-form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <input type="text" placeholder="e-mail" name="username" [(ngModel)]="model.email"
+               #username="ngModel" required/>
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted
+          && !username.valid">Username is required</div>
+      </div>
+      <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input name="password" [(ngModel)]="model.password"
+               #password="ngModel" required  type="password" placeholder="password"/>
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted
+          && !password.valid">Password is required</div>
+        <button [disabled]="loading">login</button>
+        <p class="message"><img style="width: 30px; position: absolute; margin-left: -15px;"
+                                src="../../../assets/hat.png"></p>
+      </div>
+    </form>
+
+    <p class="alert alert-danger" role="alert" *ngIf="authService.error">Niewłaściwa nazwa użytkownika lub hasło</p>
+  </div>
+</div>

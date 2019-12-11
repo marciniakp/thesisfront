@@ -1,0 +1,60 @@
+<p class="alert alert-danger" *ngIf="!authService.isAuthenticated()">Aby mieć dostęp do listy tematów, musisz się zalogować</p>
+<p class="alert alert-danger" *ngIf="authService.isStudent() && authService.isAuthenticated()">Nie posiadasz uprawnień do tej zakładki</p>
+
+<div *ngIf="authService.isAuthenticated() && !authService.isStudent()">
+  <div style="margin: 10px 30px;">
+    <h2 class="contain" style="text-align: center; padding: 40px; margin-bottom: 100px;">Dodaj temat</h2>
+  </div>
+  <div style="margin: 10px;">
+    <div class="contain">
+      <form (ngSubmit)="addSubject(f)" #f="ngForm">
+        <table class="table borderless table-custom">
+          <tbody>
+          <tr>
+            <td><label for="topic" style="padding-top: 30px;">Temat</label></td>
+            <td>
+            <textarea
+              id="topic"
+              type="text"
+              name="topic"
+              class="form-control"
+              ngModel
+              required
+            >
+            </textarea>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="description" style="padding-top: 80px;">Opis</label></td>
+            <td>
+            <textarea
+              id="description"
+              type="text"
+              name="description"
+              class="form-control"
+              ngModel
+              required
+            >
+            </textarea>
+            </td>
+          </tr>
+          <tr>
+            <td><label style="padding-top: 5px;">Promotor</label></td>
+            <td>
+              <label
+                type="text"
+                class="form-control"
+                required
+              >{{authService.getUser()}}</label>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div style="text-align: center">
+          <button type="submit" class="btn btn-success" [disabled]="!f.valid">Dodaj</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <p class="alert alert-primary" *ngIf="added">Pomyślnie dodano temat</p>
+</div>

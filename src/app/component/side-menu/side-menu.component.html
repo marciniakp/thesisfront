@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>e-booker</h3>
+    </div>
+    <br/><br/>
+    <ul class="list-unstyled components">
+      <ng-template [ngIf]="authService.isAuthenticated()">
+      <li>
+        <a routerLink="/list">Lista tematów</a>
+      </li>
+      <li *ngIf="!authService.isStudent()">
+        <a routerLink="/add">{{addLabel}}</a>
+      </li>
+        <li>
+        <a routerLink="/mylist">{{myListLabel}}</a>
+      </li>
+      <li style="position: absolute; bottom:20px; width: 100%">
+        <a (click)="onLogout()" routerLink="/login"> Wyloguj się </a>
+      </li>
+      </ng-template>
+      <br/>
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+      <li>
+        <a href="/login">Zaloguj się</a>
+      </li>
+      <li>
+        <a href="/register">Zarejestruj się</a>
+      </li>
+      </ng-template>
+    </ul>
+  </nav>
+
+</div>

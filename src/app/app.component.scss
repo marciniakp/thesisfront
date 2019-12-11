@@ -1,7 +1,32 @@
-body {
-  width: 1400px;
-}
 .flex-container {
   display: flex;
+  max-width: 100%;
+  background-color: white;
 }
 
+.content {
+
+  position:relative;
+  left:0; right:0;
+  top:0; bottom:0;
+  margin: auto;
+
+  max-height:100%;
+  overflow:auto;
+  min-width: 50%;
+  max-width: 900px;
+}
+
+.menu {
+  margin-right: 10px;
+  height: 100%;
+}
+
+.right-column {
+  width: calc(100% - 250px);
+  padding: 20px;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
